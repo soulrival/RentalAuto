@@ -1,0 +1,59 @@
+﻿@page
+@model RentalAuto.Pages.Cars.DeleteModel
+@{
+    ViewData["Title"] = "Удалить автомобиль";
+}
+
+<h1>Удалить автомобиль</h1>
+
+<h3>Вы уверены, что хотите удалить этот автомобиль?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.Brand)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.Brand)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.ModelName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.ModelName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.RegistrationNumber)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.RegistrationNumber)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.Status)
+        </dt>
+        <dd class="col-sm-9">
+            @if (Model.Car.Status == "available")
+            {
+                <span class="badge bg-success">Доступен</span>
+            }
+            else
+            {
+                <span class="badge bg-danger">Недоступен</span>
+            }
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Car.CarId" />
+        @if (ViewData.ModelState.ErrorCount > 0)
+        {
+            <div class="alert alert-danger">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            </div>
+        }
+        <div class="form-group">
+            <input type="submit" value="Удалить" class="btn btn-danger" /> 
+            <a asp-page="./Index" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>

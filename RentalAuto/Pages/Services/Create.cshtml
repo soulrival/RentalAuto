@@ -1,0 +1,36 @@
+﻿@page
+@model RentalAuto.Pages.Services.CreateModel
+@{
+    ViewData["Title"] = "Добавить услугу";
+}
+
+<h1>Добавить новую услугу</h1>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group mb-3">
+    <label asp-for="Service.Name" class="control-label"></label>
+    <input asp-for="Service.Name" class="form-control" placeholder="Например: Страховка" />
+    <span asp-validation-for="Service.Name" class="text-danger"></span>
+</div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Service.Price" class="control-label"></label>
+                <input asp-for="Service.Price" class="form-control" type="number" step="0.01" min="0.01" placeholder="0.00" />
+                <span asp-validation-for="Service.Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+                <a asp-page="/Services/Index" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

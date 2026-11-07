@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Главная";
+}
+
+<div class="text-center py-5">
+    <h1 class="display-4 mb-4">Добро пожаловать в сервис по прокату автомобилей!</h1>
+    <p class="lead">
+        Быстро, надёжно и без лишних хлопот — выберите автомобиль, подходящий именно вам.
+    </p>
+
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <div class="mt-4">
+            @if (User.IsInRole("rental_client"))
+            {
+                <a class="btn btn-primary btn-lg mx-2" asp-page="/Bookings/Create">Забронировать автомобиль</a>
+                <a class="btn btn-outline-secondary btn-lg mx-2" asp-page="/Cars/Index">Посмотреть доступные авто</a>
+            }
+            else if (User.IsInRole("rental_inspector"))
+            {
+                <a class="btn btn-success btn-lg mx-2" asp-page="/Cars/InspectorIndex">Управление автомобилями</a>
+            }
+            else if (User.IsInRole("rental_admin"))
+            {
+                <a class="btn btn-danger btn-lg mx-2" asp-page="/Admin/Dashboard">Панель администратора</a>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="mt-4">
+            <a class="btn btn-primary btn-lg mx-2" asp-page="/Account/Login">Войти в систему</a>
+            <p class="text-muted mt-3">Для клиентов, инспекторов и администраторов</p>
+        </div>
+    }
+</div>

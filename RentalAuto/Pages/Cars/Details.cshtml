@@ -1,0 +1,110 @@
+﻿@page
+@model RentalAuto.Pages.Cars.DetailsModel
+@{
+    ViewData["Title"] = "Детали автомобиля";
+}
+
+<h1>Детали автомобиля</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.Brand)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.Brand)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.ModelName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.ModelName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.Class)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.Class)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.Year)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.Year)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.Engine)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.Engine)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.Transmission)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.Transmission)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.Seats)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.Seats)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.Mileage)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.Mileage) км
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.FuelType)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.FuelType)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.Status)
+        </dt>
+        <dd class="col-sm-9">
+            @if (Model.Car.Status == "available")
+            {
+                <span class="badge bg-success">Доступен для аренды</span>
+            }
+            else
+            {
+                <span class="badge bg-danger">Недоступен</span>
+            }
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.PricePerDay)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.PricePerDay) ₽/день
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.Description)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.Description)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.Vin)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.Vin)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Car.RegistrationNumber)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Car.RegistrationNumber)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole("rental_inspector") || User.IsInRole("rental_admin"))
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Car.CarId" class="btn btn-warning">Редактировать</a>
+    }
+    <a asp-page="./Index" class="btn btn-secondary">Назад к списку</a>
+</div>

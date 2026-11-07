@@ -1,0 +1,64 @@
+﻿@page
+@model RentalAuto.Pages.Locations.CreateModel
+@{
+    ViewData["Title"] = "Добавить локацию";
+}
+
+<h1>Добавить новую локацию</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Location.Name" class="control-label"></label>
+                        <input asp-for="Location.Name" class="form-control" />
+                        <span asp-validation-for="Location.Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Location.City" class="control-label"></label>
+                        <input asp-for="Location.City" class="form-control" />
+                        <span asp-validation-for="Location.City" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Location.Address" class="control-label"></label>
+                <input asp-for="Location.Address" class="form-control" />
+                <span asp-validation-for="Location.Address" class="text-danger"></span>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Location.Phone" class="control-label"></label>
+                        <input asp-for="Location.Phone" class="form-control" placeholder="+79001234567" />
+                        <span asp-validation-for="Location.Phone" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Location.WorkingHours" class="control-label"></label>
+                        <input asp-for="Location.WorkingHours" class="form-control" placeholder="09:00-20:00" />
+                        <span asp-validation-for="Location.WorkingHours" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

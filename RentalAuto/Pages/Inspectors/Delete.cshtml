@@ -1,0 +1,46 @@
+﻿@page
+@model RentalAuto.Pages.Inspectors.DeleteModel
+@{
+    ViewData["Title"] = "Удалить осмотрщика";
+}
+
+<h1>Удалить осмотрщика</h1>
+
+<h3>Вы уверены, что хотите удалить этого осмотрщика?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Inspector.Surname)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Inspector.Surname)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Inspector.Firstname)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Inspector.Firstname)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Inspector.Patronymic)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Inspector.Patronymic)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Inspector.HireDate)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Inspector.HireDate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Inspector.InspectorId" />
+        <div class="form-group">
+            <input type="submit" value="Удалить" class="btn btn-danger" /> 
+            <a asp-page="./Index" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>

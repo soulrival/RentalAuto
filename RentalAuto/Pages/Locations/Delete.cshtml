@@ -1,0 +1,52 @@
+﻿@page
+@model RentalAuto.Pages.Locations.DeleteModel
+@{
+    ViewData["Title"] = "Удалить локацию";
+}
+
+<h1>Удалить локацию</h1>
+
+<h3>Вы уверены, что хотите удалить эту локацию?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Location.Name)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Location.Name)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Location.Address)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Location.Address)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Location.City)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Location.City)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Location.Phone)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Location.Phone)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Location.LocationId" />
+        @if (ViewData.ModelState.ErrorCount > 0)
+        {
+            <div class="alert alert-danger">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            </div>
+        }
+        <div class="form-group">
+            <input type="submit" value="Удалить" class="btn btn-danger" /> 
+            <a asp-page="./Index" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>

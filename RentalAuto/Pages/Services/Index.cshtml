@@ -1,0 +1,93 @@
+﻿@page "{sortOrder?}/{searchString?}/{pageIndex?}"
+@model RentalAuto.Pages.Services.IndexModel
+@{
+    ViewData["Title"] = "Список услуг";
+}
+
+<h1>Список дополнительных услуг</h1>
+
+<p>
+    @if (User.IsInRole("rental_admin"))
+    {
+        <a asp-page="Create" class="btn btn-primary">Добавить новую услугу</a>
+    }
+</p>
+
+@* Форма поиска *@
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Найти по названию услуги:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" class="form-control d-inline" style="width: 200px;" />
+            <input type="submit" value="Поиск" class="btn btn-sm btn-outline-secondary" /> |
+            <a asp-page="./Index">Показать все</a>
+        </p>
+    </div>
+</form>
+
+<table class="table table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>
+                <a asp-page="./Index" 
+                   asp-route-sortOrder="@(Model.CurrentSort == "name_asc" ? "name_desc" : "name_asc")"
+                   asp-route-searchString="@Model.CurrentFilter">
+                    Название @if (Model.CurrentSort == "name_asc") { <span>▲</span> } else if (Model.CurrentSort == "name_desc") { <span>▼</span> }
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" 
+                   asp-route-sortOrder="@(Model.CurrentSort == "price_asc" ? "price_desc" : "price_asc")"
+                   asp-route-searchString="@Model.CurrentFilter">
+                    Цена @if (Model.CurrentSort == "price_asc") { <span>▲</span> } else if (Model.CurrentSort == "price_desc") { <span>▼</span> }
+                </a>
+            </th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Service) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.ServiceId" class="btn btn-sm btn-info">Подробнее</a>
+                @if (User.IsInRole("rental_admin"))
+                {
+                    <a asp-page="./Edit" asp-route-id="@item.ServiceId" class="btn btn-sm btn-warning">Редактировать</a>
+                    <a asp-page="./Delete" asp-route-id="@item.ServiceId" class="btn btn-sm btn-danger">Удалить</a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@* Пагинация *@
+<nav>
+    <ul class="pagination">
+        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+            <a class="page-link" asp-page="./Index" 
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-searchString="@Model.CurrentFilter"
+               asp-route-pageIndex="@(Model.CurrentPage - 1)">Предыдущая</a>
+        </li>
+        
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a class="page-link" asp-page="./Index"
+                   asp-route-sortOrder="@Model.CurrentSort"
+                   asp-route-searchString="@Model.CurrentFilter"
+                   asp-route-pageIndex="@i">@i</a>
+            </li>
+        }
+        
+        <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+            <a class="page-link" asp-page="./Index" 
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-searchString="@Model.CurrentFilter"
+               asp-route-pageIndex="@(Model.CurrentPage + 1)">Следующая</a>
+        </li>
+    </ul>
+</nav>

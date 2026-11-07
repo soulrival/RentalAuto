@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RentalAuto.Models.Booking">
+    <Position X="6.75" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAQAEAAAAQIAQAAgAAAAACgAACAQAAAAIAAAEAAAAQ=</HashCode>
+      <FileName>Models\Booking.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BookingDetail" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RentalAuto.Models.BookingDetail">
+    <Position X="13.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAIAQAAAAAAAAIgAAAAwAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\BookingDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentalAuto.Models.Car">
+    <Position X="4.25" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAACEBAAgAAAAAoIAAACAAABAAEAAFIAAAAgBgAA=</HashCode>
+      <FileName>Models\Car.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Booking" />
+      <Property Name="BookingDetail" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RentalAuto.Models.Client">
+    <Position X="9.5" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAGIAACAgAAAAgAAAAAAABABQAAAAAIAAIAAAAIA=</HashCode>
+      <FileName>Models\Client.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Booking" />
+      <Property Name="BookingDetail" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RentalAuto.Models.Inspector">
+    <Position X="2" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAGAAAAQAAAAAAAAAAAAABCAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Inspector.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Car" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RentalAuto.Models.Location">
+    <Position X="9.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAIAGAAAAAAAAAIAAAAAAQAAAAAAAEiAIAAIAAAAAE=</HashCode>
+      <FileName>Models\Location.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BookingReturn" />
+      <Property Name="BookingPickup" />
+      <Property Name="BookingDetail" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RentalAuto.Models.Service">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAQAgAAAAAAAAAAQAAABAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Models\Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Booking" />
+      <Property Name="BookingDetail" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

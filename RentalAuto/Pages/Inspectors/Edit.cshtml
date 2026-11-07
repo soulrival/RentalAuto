@@ -1,0 +1,59 @@
+﻿@page
+@model RentalAuto.Pages.Inspectors.EditModel
+@{
+    ViewData["Title"] = "Редактировать осмотрщика";
+}
+
+<h1>Редактировать осмотрщика</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Inspector.InspectorId" />
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Inspector.Surname" class="control-label"></label>
+                        <input asp-for="Inspector.Surname" class="form-control" />
+                        <span asp-validation-for="Inspector.Surname" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Inspector.Firstname" class="control-label"></label>
+                        <input asp-for="Inspector.Firstname" class="form-control" />
+                        <span asp-validation-for="Inspector.Firstname" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Inspector.Patronymic" class="control-label"></label>
+                        <input asp-for="Inspector.Patronymic" class="form-control" />
+                        <span asp-validation-for="Inspector.Patronymic" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="HireDate" class="control-label"></label>
+                        <input asp-for="HireDate" class="form-control" type="date" />
+                        <span asp-validation-for="HireDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+                <a asp-page="./Index" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

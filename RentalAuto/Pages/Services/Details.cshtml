@@ -1,0 +1,31 @@
+﻿@page
+@model RentalAuto.Pages.Services.DetailsModel
+@{
+    ViewData["Title"] = "Детали услуги";
+}
+
+<h1>Детали услуги</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Service.Name)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Service.Name)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Service.Price)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Service.Price)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole("rental_admin"))
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Service.ServiceId" class="btn btn-warning">Редактировать</a>
+    }
+    <a asp-page="./Index" class="btn btn-secondary">Назад к списку</a>
+</div>

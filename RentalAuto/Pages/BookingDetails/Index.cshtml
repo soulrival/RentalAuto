@@ -1,0 +1,34 @@
+﻿@page
+@model RentalAuto.Pages.BookingDetails.IndexModel
+@{
+    ViewData["Title"] = "Детальная информация о бронированиях";
+}
+
+<h1>Детальная информация о бронированиях</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Клиент</th>
+            <th>Автомобиль</th>
+            <th>Локация получения</th>
+            <th>Локация возврата</th>
+            <th>Даты</th>
+            <th>Услуги</th>
+            <th>Итоговая цена</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.BookingDetail) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ClientFullname)</td>
+            <td>@Html.DisplayFor(modelItem => item.CarModel)</td>
+            <td>@Html.DisplayFor(modelItem => item.PickupLocation)</td>
+            <td>@Html.DisplayFor(modelItem => item.ReturnLocation)</td>
+            <td>@Html.DisplayFor(modelItem => item.StartDate) - @Html.DisplayFor(modelItem => item.EndDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.Services)</td>
+            <td>@Html.DisplayFor(modelItem => item.TotalPrice)</td>
+        </tr>
+}
+    </tbody>
+</table>

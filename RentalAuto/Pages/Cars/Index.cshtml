@@ -1,0 +1,129 @@
+﻿@page "{sortOrder?}/{currentFilter?}/{pageIndex?}"
+@model RentalAuto.Pages.Cars.IndexModel
+@{
+    ViewData["Title"] = "Список автомобилей";
+}
+
+<h1>Список автомобилей</h1>
+
+<p>
+    @if (User.IsInRole("rental_admin"))
+    {
+        <a asp-page="Create" class="btn btn-primary">Добавить новый автомобиль</a>
+    }
+</p>
+
+@* Фильтр поиска *@
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Найти по названию:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Поиск" class="btn btn-sm btn-outline-secondary" /> |
+            <a asp-page="./Index">Показать все</a>
+        </p>
+    </div>
+</form>
+
+<table class="table table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>
+                <a asp-page="./Index" 
+                   asp-route-sortOrder="@(Model.CurrentSort == "brand_asc" ? "brand_desc" : "brand_asc")"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    Марка @if (Model.CurrentSort == "brand_asc") { <span>▲</span> } else if (Model.CurrentSort == "brand_desc") { <span>▼</span> }
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" 
+                   asp-route-sortOrder="@(Model.CurrentSort == "model_asc" ? "model_desc" : "model_asc")"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    Модель @if (Model.CurrentSort == "model_asc") { <span>▲</span> } else if (Model.CurrentSort == "model_desc") { <span>▼</span> }
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" 
+                   asp-route-sortOrder="@(Model.CurrentSort == "year_asc" ? "year_desc" : "year_asc")"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    Год @if (Model.CurrentSort == "year_asc") { <span>▲</span> } else if (Model.CurrentSort == "year_desc") { <span>▼</span> }
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" 
+                   asp-route-sortOrder="@(Model.CurrentSort == "price_asc" ? "price_desc" : "price_asc")"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    Цена в день @if (Model.CurrentSort == "price_asc") { <span>▲</span> } else if (Model.CurrentSort == "price_desc") { <span>▼</span> }
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" 
+                   asp-route-sortOrder="@(Model.CurrentSort == "status_asc" ? "status_desc" : "status_asc")"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    Статус @if (Model.CurrentSort == "status_asc") { <span>▲</span> } else if (Model.CurrentSort == "status_desc") { <span>▼</span> }
+                </a>
+            </th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Car) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Brand)</td>
+            <td>@Html.DisplayFor(modelItem => item.ModelName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Year)</td>
+            <td>@Html.DisplayFor(modelItem => item.PricePerDay)</td>
+            <td>
+                @if (item.Status == "available")
+                {
+                    <span class="badge bg-success">Доступен</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">Недоступен</span>
+                }
+            </td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.CarId" class="btn btn-sm btn-info">Подробнее</a>
+                @if (User.IsInRole("rental_inspector") || User.IsInRole("rental_admin"))
+                {
+                    <a asp-page="./Edit" asp-route-id="@item.CarId" class="btn btn-sm btn-warning">Редактировать</a>
+                }
+                @if (User.IsInRole("rental_admin"))
+                {
+                    <a asp-page="./Delete" asp-route-id="@item.CarId" class="btn btn-sm btn-danger">Удалить</a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@* Пагинация *@
+<nav>
+    <ul class="pagination">
+        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+            <a class="page-link" asp-page="./Index" 
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-currentFilter="@Model.CurrentFilter"
+               asp-route-pageIndex="@(Model.CurrentPage - 1)">Предыдущая</a>
+        </li>
+        
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a class="page-link" asp-page="./Index"
+                   asp-route-sortOrder="@Model.CurrentSort"
+                   asp-route-currentFilter="@Model.CurrentFilter"
+                   asp-route-pageIndex="@i">@i</a>
+            </li>
+        }
+        
+        <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+            <a class="page-link" asp-page="./Index" 
+               asp-route-sortOrder="@Model.CurrentSort"
+               asp-route-currentFilter="@Model.CurrentFilter"
+               asp-route-pageIndex="@(Model.CurrentPage + 1)">Следующая</a>
+        </li>
+    </ul>
+</nav>

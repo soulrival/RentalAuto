@@ -1,0 +1,40 @@
+﻿@page
+@model RentalAuto.Pages.Inspectors.DetailsModel
+@{
+    ViewData["Title"] = "Детали осмотрщика";
+}
+
+<h1>Детали осмотрщика</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Inspector.Surname)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Inspector.Surname)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Inspector.Firstname)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Inspector.Firstname)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Inspector.Patronymic)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Inspector.Patronymic)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Inspector.HireDate)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Inspector.HireDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Inspector.InspectorId" class="btn btn-warning">Редактировать</a>
+    <a asp-page="./Index" class="btn btn-secondary">Назад к списку</a>
+</div>

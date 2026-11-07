@@ -1,0 +1,12 @@
+﻿@page
+@model RentalAuto.Pages.Account.AccessDeniedModel
+@{
+    ViewData["Title"] = "Доступ запрещен";
+}
+
+<h2>Доступ запрещен</h2>
+<hr />
+<div class="alert alert-danger">
+    У вас нет прав для доступа к запрошенной странице.
+</div>
+<a asp-page="/Index" class="btn btn-secondary">На главную</a>

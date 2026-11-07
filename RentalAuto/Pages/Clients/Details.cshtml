@@ -1,0 +1,67 @@
+﻿@page
+@model RentalAuto.Pages.Clients.DetailsModel
+@{
+    ViewData["Title"] = "Детали клиента";
+}
+
+<h1>Детали клиента</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Client.Surname)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Client.Surname)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Client.Firstname)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Client.Firstname)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Client.Patronymic)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Client.Patronymic)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Client.DateOfBirth)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Client.DateOfBirth)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Client.Phone)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Client.Phone)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Client.Email)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Client.Email)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Client.PassportNumber)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Client.PassportNumber)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Client.DriverLicenseNumber)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Client.DriverLicenseNumber)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole("rental_admin") || User.IsInRole("rental_client"))
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Client.ClientId" class="btn btn-warning">Редактировать</a>
+    }
+    <a asp-page="./Index" class="btn btn-secondary">Назад к списку</a>
+</div>

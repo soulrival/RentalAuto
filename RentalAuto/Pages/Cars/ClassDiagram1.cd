@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RentalAuto.Pages.Cars.CreateModel">
+    <Position X="11.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAQABAEAEAAACAAAAAAAAAAAAAQEAAAIAAA=</HashCode>
+      <FileName>Pages\Cars\Create.cshtml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Car1" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RentalAuto.Pages.Cars.DeleteModel">
+    <Position X="9.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQABAAgAAAAAAAAAAAAAAAAAAAEAAAIAAA=</HashCode>
+      <FileName>Pages\Cars\Delete.cshtml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Car1" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RentalAuto.Pages.Cars.DetailsModel">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQABAAgAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Pages\Cars\Details.cshtml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Car1" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RentalAuto.Pages.Cars.EditModel">
+    <Position X="3.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAQAAgAQABAEgEAAACAAAAAAAAAAAAAAEAAAIAAA=</HashCode>
+      <FileName>Pages\Cars\Edit.cshtml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Car1" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RentalAuto.Pages.Cars.IndexModel">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABgAAAAQABAAgAAAQgAAAAAQAAAAAAAAAECAIAAI=</HashCode>
+      <FileName>Pages\Cars\Index.cshtml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Car1" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RentalAuto.Models.Car">
+    <Position X="7.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAACEBAAgAAAAAoIAAACAAABAAEAAFIAAAAgBgAA=</HashCode>
+      <FileName>Models\Car.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

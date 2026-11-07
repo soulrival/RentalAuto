@@ -1,0 +1,49 @@
+﻿@page
+@model RentalAuto.Pages.Locations.DetailsModel
+@{
+    ViewData["Title"] = "Детали локации";
+}
+
+<h1>Детали локации</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Location.Name)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Location.Name)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Location.Address)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Location.Address)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Location.City)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Location.City)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Location.Phone)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Location.Phone)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Location.WorkingHours)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Location.WorkingHours)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole("rental_admin"))
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Location.LocationId" class="btn btn-warning">Редактировать</a>
+    }
+    <a asp-page="./Index" class="btn btn-secondary">Назад к списку</a>
+</div>

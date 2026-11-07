@@ -1,0 +1,236 @@
+﻿@page
+@model RentalAuto.Pages.Cars.EditModel
+@{
+    ViewData["Title"] = "Редактировать автомобиль";
+}
+
+<h1>Редактировать автомобиль</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Car.CarId" />
+            
+            <!-- Скрытое поле для цены в день, которое всегда отправляется на сервер -->
+            <input type="hidden" asp-for="Car.PricePerDay" id="hiddenPricePerDay" />
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Car.Vin" class="control-label"></label>
+                        @if (Model.IsInspector)
+                        {
+                            <div class="form-control">@Model.Car.Vin</div>
+                            <input type="hidden" asp-for="Car.Vin" />
+                        }
+                        else
+                        {
+                            <input asp-for="Car.Vin" class="form-control" />
+                        }
+                        <span asp-validation-for="Car.Vin" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Car.RegistrationNumber" class="control-label"></label>
+                        @if (Model.IsInspector)
+                        {
+                            <div class="form-control">@Model.Car.RegistrationNumber</div>
+                            <input type="hidden" asp-for="Car.RegistrationNumber" />
+                        }
+                        else
+                        {
+                            <input asp-for="Car.RegistrationNumber" class="form-control" />
+                        }
+                        <span asp-validation-for="Car.RegistrationNumber" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Car.Brand" class="control-label"></label>
+                        @if (Model.IsInspector)
+                        {
+                            <div class="form-control">@Model.Car.Brand</div>
+                            <input type="hidden" asp-for="Car.Brand" />
+                        }
+                        else
+                        {
+                            <input asp-for="Car.Brand" class="form-control" />
+                        }
+                        <span asp-validation-for="Car.Brand" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Car.ModelName" class="control-label"></label>
+                        @if (Model.IsInspector)
+                        {
+                            <div class="form-control">@Model.Car.ModelName</div>
+                            <input type="hidden" asp-for="Car.ModelName" />
+                        }
+                        else
+                        {
+                            <input asp-for="Car.ModelName" class="form-control" />
+                        }
+                        <span asp-validation-for="Car.ModelName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Car.Class" class="control-label"></label>
+                        @if (Model.IsInspector)
+                        {
+                            <div class="form-control">@Model.Car.Class</div>
+                            <input type="hidden" asp-for="Car.Class" />
+                        }
+                        else
+                        {
+                            <select asp-for="Car.Class" class="form-control" asp-items="Model.ClassList"></select>
+                        }
+                        <span asp-validation-for="Car.Class" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Car.Year" class="control-label"></label>
+                        @if (Model.IsInspector)
+                        {
+                            <div class="form-control">@Model.Car.Year</div>
+                            <input type="hidden" asp-for="Car.Year" />
+                        }
+                        else
+                        {
+                            <input asp-for="Car.Year" class="form-control" type="number" min="1980" max="@DateTime.Now.Year" />
+                        }
+                        <span asp-validation-for="Car.Year" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Car.Engine" class="control-label"></label>
+                        @if (Model.IsInspector)
+                        {
+                            <div class="form-control">@Model.Car.Engine</div>
+                            <input type="hidden" asp-for="Car.Engine" />
+                        }
+                        else
+                        {
+                            <input asp-for="Car.Engine" class="form-control" />
+                        }
+                        <span asp-validation-for="Car.Engine" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Car.Transmission" class="control-label"></label>
+                        @if (Model.IsInspector)
+                        {
+                            <div class="form-control">@Model.Car.Transmission</div>
+                            <input type="hidden" asp-for="Car.Transmission" />
+                        }
+                        else
+                        {
+                            <select asp-for="Car.Transmission" class="form-control" asp-items="Model.TransmissionList"></select>
+                        }
+                        <span asp-validation-for="Car.Transmission" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Car.Seats" class="control-label"></label>
+                        @if (Model.IsInspector)
+                        {
+                            <div class="form-control">@Model.Car.Seats</div>
+                            <input type="hidden" asp-for="Car.Seats" />
+                        }
+                        else
+                        {
+                            <input asp-for="Car.Seats" class="form-control" type="number" min="2" max="9" />
+                        }
+                        <span asp-validation-for="Car.Seats" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Car.Mileage" class="control-label"></label>
+                        <input asp-for="Car.Mileage" class="form-control" type="number" min="0" />
+                        <span asp-validation-for="Car.Mileage" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Car.FuelType" class="control-label"></label>
+                        @if (Model.IsInspector)
+                        {
+                            <div class="form-control">@Model.Car.FuelType</div>
+                            <input type="hidden" asp-for="Car.FuelType" />
+                        }
+                        else
+                        {
+                            <select asp-for="Car.FuelType" class="form-control" asp-items="Model.FuelTypeList"></select>
+                        }
+                        <span asp-validation-for="Car.FuelType" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Car.Status" class="control-label"></label>
+                        <select asp-for="Car.Status" class="form-control" asp-items="Model.StatusList"></select>
+                        <span asp-validation-for="Car.Status" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Car.PricePerDay" class="control-label"></label>
+                        @if (Model.IsInspector)
+                        {
+                            <div class="form-control">@Model.Car.PricePerDay.ToString("F2") ₽</div>
+                        }
+                        else
+                        {
+                            <input asp-for="Car.PricePerDay" class="form-control" type="number" step="0.01" min="0.01" 
+                                   oninput="document.getElementById('hiddenPricePerDay').value = this.value" />
+                        }
+                        <span asp-validation-for="Car.PricePerDay" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Car.Description" class="control-label"></label>
+                @if (Model.IsInspector)
+                {
+                    <div class="form-control" style="min-height: 100px; white-space: pre-wrap;">@Model.Car.Description</div>
+                    <input type="hidden" asp-for="Car.Description" />
+                }
+                else
+                {
+                    <textarea asp-for="Car.Description" class="form-control" rows="3"></textarea>
+                }
+                <span asp-validation-for="Car.Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+                <a asp-page="./Index" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
